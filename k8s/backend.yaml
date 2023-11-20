@@ -15,61 +15,12 @@ spec:
       containers:
         - name: backend
           # 여러분의 backend image 주소를 입력해주세요.
-          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_397048b2f56c
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_468a42fac16e
           env:
             - name: TZ
               value: Asia/Seoul
             - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: database-url
-            - name: DATABASE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: database-username
-            - name: DATABASE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: database-password
-            - name: SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: secret-key
-            - name: KAKAO_CLIENT_ID
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: react-app-kakao-api-key
-            - name: KAKAO_REDIRECT_URI
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: react-app-kakao-redirect-uri
-            - name: KAKAO_BASE_URI
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: react-app-base-url
-            - name: KRAMPOLINE_PROXY_HOSTNAME
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: krampoline-proxy-url
-            - name: KRAMPOLINE_PROXY_PORT
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: krampoline-proxy-port
-            - name: CORS_ORIGIN
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: cors-origin
-
+              value: jdbc:mariadb://mariadb:3306/krampoline
           resources:
             requests:
               memory: 1Gi
